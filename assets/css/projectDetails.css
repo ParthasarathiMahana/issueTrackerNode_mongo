@@ -1,0 +1,230 @@
+*{
+    font-family: sans-serif;
+}
+.add_issue_form_container{
+    display: flex;
+}
+.main-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+}
+.heading{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    background-color: rgb(97,218,251);
+    height: 5rem;
+}
+.project_details{
+    width: 20%;
+}
+.project_details h2{
+    margin-left: 1rem;
+    margin-top: 0.2rem;
+    margin-bottom: -0.9rem;
+}
+.project_details h5{
+    margin-left: 1rem;
+    margin-top: -0.7rem;
+}
+.search_bar{
+    display: flex;
+    width: 50%;
+}
+.search_box{
+    width: 90%;
+    margin-top: 4%;
+    height: 43%;
+    outline: none;
+    font-size: large;
+    border: none;
+}
+.search_button{
+    border: none;
+    margin-top: 4%;
+    height: 43%;
+    font-size: large;
+}
+.search_button:hover{
+    cursor: pointer;
+    background-color: black;
+    color: white;
+}
+.filter{
+    /* border: 1px solid black; */
+    display: flex;
+    width: 15%;
+}
+.filter button{
+    height: 40%;
+    width: 70%;
+    font-size: large;
+    border: none;
+    margin-left: 25%;
+    margin-top: 13%;
+}
+.filter_btn:hover{
+    background-color: black;
+    color: white;
+}
+.add_new_issue{
+    /* border: 1px solid black; */
+    display: flex;
+    width: 15%;
+}
+.add_new_issue button{
+    height: 40%;
+    font-size: large;
+    border: none;
+    margin-left: 1.5rem;
+    margin-top: 13%;
+    padding: 0 1rem 0 1rem;
+
+}
+.add_new_issue button:hover{
+    background-color: black;
+    color: white;
+}
+.add_issue_form_container{
+    width: 80%;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    background-color: antiquewhite;
+    display: none;
+}
+.add_issue_form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.add_issue_form_container input{
+    border: none;
+    outline: none;
+    height: 2rem;
+    width: 22.5%;
+    margin-right: 0.5rem;
+}
+.add_issue_form_container input:focus{
+    background-color: #e0e0e0;
+}
+.add_issue_form_container button{
+    border: none;
+    width: 10%;
+    height: 2rem;
+}
+.add_issue_form_container button:hover{
+    background-color: black;
+    color: white;
+}
+.label_container{
+    width: 22.5%;
+    height: 2rem;
+    background-color: white;
+    margin-right: 0.5rem;
+    color: #827779;
+    padding-top: 0.3rem;
+    padding-left: 0.1rem;
+}
+.label_div{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    justify-content: center;
+}
+.label_div ul{
+    width: 90%;
+}
+.placeholders{
+    display: flex;
+    justify-content: space-between;
+}
+.placeholders img{
+    height: 5%;
+    width: 5%;
+    margin-top: 0.3rem;
+    margin-right: 0.3rem;
+}
+.label_dropdown{
+    margin-top: 0.1rem;
+    border: 1px solid black;
+    display: none;
+    flex-direction: column;
+}
+.label_dropdown input{
+    height: 1rem;
+    width: 1rem;
+    margin-left: 1rem;
+}
+.issues_list{
+    margin-top: 5.5rem;
+    display: flex;
+    flex-direction: column;
+    width: 82%;
+    margin-right: 2.5%;
+}
+.issues_list ul{
+    margin-top: 1.5rem;
+}
+.issues_list ul li{
+    display: flex;
+    height: 5rem;
+    align-items: center;
+    width: 100%;
+    background-color: #f1f1f1;
+    padding-left: 1rem;
+    padding-top: 0.5rem;
+    margin-bottom: 0.2rem;
+}
+.bug_detail{
+    margin-top: -0.4rem;
+    width: 20%;
+}
+.title{
+    font-size: 1.5rem;
+}
+.labels{
+    width: 20%;
+    margin-bottom: 1.5rem;
+}
+.labelsList{
+    display: flex;
+    width: 50%;
+}
+.labelsList li{
+    width: 10%;
+}
+/* filter form */
+.filter_form_container{
+    margin-top: 1rem;
+    display: none;
+    border: 2px solid #edece4;
+    width: 30%;
+    height: 15rem;
+    justify-content: center;
+}
+.filter_form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.filter_by_label_div{
+    border: none;
+    height: 10%;
+}
+.filter_by_author_div{
+    border: none;
+    height: 10%;
+}
+.filter_by_label_div img{
+    height: 10px;
+    width: 10px;
+}
+.label_filter_option_container{
+    display: none;
+}
+
+.list_of_authors{
+    display: none;
+}
