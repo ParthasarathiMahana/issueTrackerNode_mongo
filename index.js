@@ -124,30 +124,37 @@ app.post("/filter", async (req, res)=>{
     let allLabels = [];
     let issues =[];
 
-    let allIssues = await Issues.find({projectId})
-    for(let i=0; i<allIssues.length; i++){
-        for(let j=0; j<allIssues[i].labels.length; j++){
-            if(!allLabels.includes(allIssues[i].labels[j])){
-                allLabels.push(allIssues[i].labels[j]);
-            }
-        }
+    let authors=[]
+    Issues.find({projectId},(err, is)=>{
+        authors = uniquAuthors(is);
+    })
+
+    let allIssuesByAuthor = await Issues.find({author:{$in: filters}, projectId})
+    let allIssuesByLabel = await Issues.find({labels:{$in: filters}, projectId})
+
+    let pd=[];
+    if(allIssuesByAuthor.length ===0){
+        pd = [...allIssuesByLabel]
+    }else if(allIssuesByLabel.length ===0){
+        pd = [...allIssuesByAuthor]
+    }
+    else{
+        pd = [...allIssuesByAuthor, ...allIssuesByLabel];
     }
 
-    allIssues.map((issue)=>{
-        if(filters.includes(issue.author)){
-            issues.push(issue);
-        }
-    })
-
-    allIssues.map((issue)=>{
-        issue.labels.map((label)=>{
-            console.log(label ,filters[1]);
+    Projects.findById(projectId,(err, project)=>{
+        Issues.find({projectId}, (err, issues)=>{
+            let labels = [];
+            issues.map((issue)=>{
+                issue.labels.map((item)=>{
+                    if(!labels.includes(item)){
+                        labels.push(item);
+                    }
+                })
+            })
+            return res.render("projectDetails", {project_detail: project, issues:pd, authors, labels});
         })
     })
-
-    console.log("filters:",filters);
-    console.log("allLabels:", allLabels);
-    console.log(issues);
 
 })
 
@@ -170,15 +177,17 @@ app.post('/search', (req, res)=>{
     })
 
     Projects.findById(projectId, (err, project)=>{
-        let labels = [];
-                issues.map((issue)=>{
-                    issue.labels.map((item)=>{
-                        if(!labels.includes(item)){
-                            labels.push(item);
-                        }
-                    })
+        Issues.find({projectId}, (err, issues)=>{
+            let labels = [];
+            issues.map((issue)=>{
+                issue.labels.map((item)=>{
+                    if(!labels.includes(item)){
+                        labels.push(item);
+                    }
                 })
-        return res.render("projectDetails", {project_detail: project, issues: iS, authors, labels});
+            })
+            return res.render("projectDetails", {project_detail: project, issues: iS, authors, labels});
+        })
     })
 })
 

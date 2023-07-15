@@ -14,7 +14,7 @@ const IssueSchema = mongoose.Schema({
         required: true
     },
     labels:{
-        type: Array,
+        type: [String],
         required: true
     },
     author:{
