@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+require("dotenv").config();
 
 const db = require('./config/mongoose');
 const Projects = require('./models/Projects');
@@ -7,7 +8,7 @@ const Issues = require('./models/Issues');
 const { cursorTo } = require('readline');
 
 const app =express();
-const port = 8000;
+const PORT = process.env.PORT || 8000;
 
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"views"));
@@ -191,6 +192,9 @@ app.post('/search', (req, res)=>{
     })
 })
 
-app.listen(port, ()=>{
-    console.log("App is up and runnig at port", port);
+
+db().then(()=>{
+    app.listen(PORT, ()=>{
+        console.log("App is up and runnig at port", PORT);
+    })
 })
